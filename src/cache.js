@@ -1,26 +1,24 @@
-import fs from "fs";
-
 const CACHE_FILE = ".embeddings.cache.json";
 
 export default class Cache {
     constructor(cache_file = CACHE_FILE) {
-        this.cache = {};
-        this.cache_file = cache_file;
+        this.cache = {}; // Use in-memory cache
+        // this.cache_file = cache_file; // The cache file path is no longer needed
     }
+
     async load() {
-        if (fs.existsSync(this.cache_file)) {
-            const data = fs.readFileSync(this.cache_file, "utf8");
-            this.cache = JSON.parse(data);
-        }
+        // In-memory cache doesn't need to load from a file, so this function is now empty
+        // If you need to persist data, consider using an alternative storage method
     }
 
     async save() {
-        fs.writeFileSync(this.cache_file, JSON.stringify(this.cache));
+        // In-memory cache doesn't need to save to a file, so this function is now empty
+        // If you need to persist data, consider using an alternative storage method
     }
 
     async set(key, value, model) {
         this.cache[`${key}-${model}`] = value;
-        await this.save();
+        // No need to save to a file since we're using in-memory storage
     }
 
     async get(key, model) {
