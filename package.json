@@ -20,7 +20,6 @@
     "author": "The Maximalist",
     "license": "MIT",
     "dependencies": {
-        "node-fetch": "^3.3.2",
         "openai": "^4.24.1"
     },
     "devDependencies": {
